@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Tracking Studio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body>
+    <div id="app-container">
+        <div id="main-content">
+            <div class="canvas-wrapper">
+                <div id="canvas-container"></div>
+            </div>
+            
+            <div class="tools-panel">
+                <div class="tool-group">
+                    <button class="tool-button active" id="draw-mode">
+                        ✏️ Draw Mode
+                    </button>
+                    <button class="tool-button" id="erase-mode">
+                        🗑️ Erase
+                    </button>
+                </div>
+                
+                <div class="tool-divider"></div>
+                
+                <div class="tool-group">
+                    <button class="tool-button" id="clear-canvas">
+                        🔄 Clear Canvas
+                    </button>
+                    <button class="tool-button" id="save-drawing">
+                        💾 Save
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="side-panel">
+            <div class="panel" id="threejs-container">
+                <div class="panel-header">
+                    <div class="panel-title">3D Hand Visualization</div>
+                    <div class="view-controls">
+                        <button class="view-button" id="reset-view">Reset</button>
+                        <button class="view-button" id="toggle-wireframe">Wireframe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel status-panel">
+                <div class="panel-header">
+                    <div class="panel-title">Controls & Status</div>
+                </div>
+                
+                <div id="status-container">
+                <div class="status-item">
+                    <div class="status-indicator" style="background: var(--success-color)"></div>
+                    <div class="status-text" id="drawing-status">Drawing Mode: Active</div>
+                </div>
+                
+                <div class="status-item">
+                    <div class="status-indicator" style="background: var(--primary-color)"></div>
+                    <div class="status-text" id="size-status">Brush Size: 4px</div>
+                </div>
+
+                </div>
+
+                <div id="color-picker">
+                    <div class="color-option active" style="background: #ef4444"></div>
+                    <div class="color-option" style="background: #f59e0b"></div>
+                    <div class="color-option" style="background: #22c55e"></div>
+                    <div class="color-option" style="background: #3b82f6"></div>
+                    <div class="color-option" style="background: #8b5cf6"></div>
+                </div>
+
+                <div class="instructions">
+                    <div class="instruction-item">
+                        <span class="instruction-icon">✋</span>
+                        <span>Use index finger to draw in the air</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-icon">✌️</span>
+                        <span>Pinch second hand to adjust brush size</span>
+                        <span class="keyboard-shortcut">↕️</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-icon">🖱️</span>
+                        <span>Drag to rotate 3D view</span>
+                        <span class="keyboard-shortcut">Drag</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-icon">⌨️</span>
+                        <span>Clear canvas</span>
+                        <span class="keyboard-shortcut">C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
