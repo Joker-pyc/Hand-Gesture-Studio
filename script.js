@@ -18,14 +18,13 @@ let currentStrokeWeight = 4;
 let scene, camera, renderer, controls;
 let handMeshes = [];
 let isWireframe = false;
-let deviceHeight = window.innerHeight;
-let deviceWidth = window.innerWidth+ deviceHeight/1.5;
+
 
 
 const CONFIG = {
     canvas: {
-        width: deviceWidth,
-        height: deviceHeight
+        width: 960,
+        height: 720
     },
     handpose: {
         backend: 'webgl',
@@ -52,15 +51,6 @@ const CONFIG = {
 function preload() {
     handPose = ml5.handPose(CONFIG.handpose);
 }
-
-function resizeCanvas() {
-  CONFIG.canvas.width = window.innerWidth;
-  CONFIG.canvas.height = window.innerHeight;
-  mainCanvas.size(CONFIG.canvas.width, CONFIG.canvas.height);
-  drawingBuffer.resizeCanvas(CONFIG.canvas.width, CONFIG.canvas.height);
-}
-
-window.addEventListener('resize', resizeCanvas);
 
 function setup() {
     const canvas = createCanvas(CONFIG.canvas.width, CONFIG.canvas.height);
